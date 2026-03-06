@@ -18,6 +18,8 @@ TypeScript API client for [WhiskeyFYI](https://whiskeyfyi.com) -- the comprehens
   - [Cask Types and Maturation](#cask-types-and-maturation)
   - [Whiskey Regions](#whiskey-regions)
 - [API Reference](#api-reference)
+- [REST API (No Auth Required)](#rest-api-no-auth-required)
+- [Features](#features)
 - [TypeScript Types](#typescript-types)
 - [Learn More About Whiskey](#learn-more-about-whiskey)
 - [Also Available for Python](#also-available-for-python)
@@ -112,6 +114,42 @@ Learn more: [Cask Types](https://whiskeyfyi.com/cask/) -- [Whiskey Glossary](htt
 | `compare(slugA, slugB)` | Compare two whiskey expressions |
 | `random()` | Random whiskey expression |
 
+## REST API (No Auth Required)
+
+All endpoints are free, require no authentication, and return JSON with CORS enabled.
+
+```bash
+curl "https://whiskeyfyi.com/api/v1/search/?q=bourbon"
+curl "https://whiskeyfyi.com/api/v1/whiskey/makers-mark/"
+curl "https://whiskeyfyi.com/api/v1/distillery/makers-mark-distillery/"
+curl "https://whiskeyfyi.com/api/v1/compare/makers-mark/woodford-reserve/"
+curl "https://whiskeyfyi.com/api/v1/random/"
+```
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/whiskey/` | List all 80 whiskey expressions |
+| GET | `/api/v1/whiskey/{slug}/` | Whiskey detail with tasting notes |
+| GET | `/api/v1/distillery/` | List all distilleries |
+| GET | `/api/v1/distillery/{slug}/` | Distillery detail |
+| GET | `/api/v1/glossary/{slug}/` | Glossary term definition |
+| GET | `/api/v1/search/?q={query}` | Search across all content |
+| GET | `/api/v1/compare/{slug1}/{slug2}/` | Compare two whiskeys |
+| GET | `/api/v1/random/` | Random whiskey expression |
+| GET | `/api/v1/openapi.json` | OpenAPI 3.1.0 specification |
+
+Full spec: [OpenAPI 3.1.0](https://whiskeyfyi.com/api/v1/openapi.json)
+
+## Features
+
+- **Comprehensive whiskey data**: 80 expressions, distillery profiles, regional styles
+- **14 whiskey types**: Bourbon, Scotch, Irish, Japanese, Rye, and more
+- **Expression comparison**: Side-by-side tasting note analysis
+- **Whiskey glossary**: Distillation and maturation terminology
+- **Zero dependencies**: Uses native `fetch`, no runtime deps
+- **Type-safe**: Full TypeScript with strict mode
+- **Tree-shakeable**: ESM with named exports
+
 ## TypeScript Types
 
 ```typescript
@@ -120,10 +158,7 @@ import type { SearchResult, GlossaryTerm, ExpressionDetail, DistilleryDetail, Ty
 
 ## Learn More About Whiskey
 
-- **Reference**: [Whiskeys](https://whiskeyfyi.com/whiskeys/) | [Distilleries](https://whiskeyfyi.com/distilleries/) | [Regions](https://whiskeyfyi.com/regions/)
-- **Guides**: [Whiskey Guides](https://whiskeyfyi.com/guides/) | [Glossary](https://whiskeyfyi.com/glossary/)
-- **API**: [Developer Docs](https://whiskeyfyi.com/developers/) | [OpenAPI Spec](https://whiskeyfyi.com/api/openapi.json)
-- **Python**: [PyPI Package](https://pypi.org/project/whiskeyfyi/)
+Visit [whiskeyfyi.com](https://whiskeyfyi.com/) to explore 80 whiskey expressions, 500+ distilleries, cask types, and regional styles with interactive tools.
 
 ## Also Available for Python
 
@@ -131,7 +166,11 @@ import type { SearchResult, GlossaryTerm, ExpressionDetail, DistilleryDetail, Ty
 pip install whiskeyfyi
 ```
 
-See the [Python package on PyPI](https://pypi.org/project/whiskeyfyi/).
+See [whiskeyfyi on PyPI](https://pypi.org/project/whiskeyfyi/) for the Python package with API client, CLI, and MCP server.
+
+<p align="center">
+  <img src="demo.gif" alt="WhiskeyFYI demo -- whiskey API client for TypeScript" width="800">
+</p>
 
 ## Beverage FYI Family
 
@@ -141,7 +180,7 @@ Part of the [FYIPedia](https://fyipedia.com) open-source developer tools ecosyst
 |---------|------|-----|-------------|
 | cocktailfyi | [PyPI](https://pypi.org/project/cocktailfyi/) | [npm](https://www.npmjs.com/package/cocktailfyi) | 636 cocktails, ABV, calories -- [cocktailfyi.com](https://cocktailfyi.com/) |
 | vinofyi | [PyPI](https://pypi.org/project/vinofyi/) | [npm](https://www.npmjs.com/package/vinofyi) | Wines, grapes, regions, food pairings -- [vinofyi.com](https://vinofyi.com/) |
-| beerfyi | [PyPI](https://pypi.org/project/beerfyi/) | [npm](https://www.npmjs.com/package/beerfyi) | 112 beer styles, hops, malts -- [beerfyi.com](https://beerfyi.com/) |
+| beerfyi | [PyPI](https://pypi.org/project/beerfyi/) | [npm](https://www.npmjs.com/package/@fyipedia/beerfyi) | 112 beer styles, hops, malts -- [beerfyi.com](https://beerfyi.com/) |
 | brewfyi | [PyPI](https://pypi.org/project/brewfyi/) | [npm](https://www.npmjs.com/package/brewfyi) | 72 coffee varieties, brew methods -- [brewfyi.com](https://brewfyi.com/) |
 | **whiskeyfyi** | [PyPI](https://pypi.org/project/whiskeyfyi/) | [npm](https://www.npmjs.com/package/whiskeyfyi) | **80 whiskey expressions, distilleries -- [whiskeyfyi.com](https://whiskeyfyi.com/)** |
 | teafyi | [PyPI](https://pypi.org/project/teafyi/) | [npm](https://www.npmjs.com/package/teafyi) | 60 tea varieties, teaware -- [teafyi.com](https://teafyi.com/) |
