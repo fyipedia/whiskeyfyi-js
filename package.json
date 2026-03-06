@@ -1,0 +1,48 @@
+{
+  "name": "whiskeyfyi",
+  "version": "0.1.0",
+  "description": "TypeScript API client for WhiskeyFYI -- whiskey expressions, distilleries, cask types, and regions. Zero dependencies.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "whiskey",
+    "whisky",
+    "bourbon",
+    "scotch",
+    "single-malt",
+    "distillery",
+    "cask",
+    "rye",
+    "irish-whiskey",
+    "japanese-whisky",
+    "api-client",
+    "whiskeyfyi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fyipedia/whiskeyfyi-js"
+  },
+  "homepage": "https://whiskeyfyi.com",
+  "license": "MIT",
+  "author": "FYIPedia",
+  "devDependencies": {
+    "tsup": "^8.0",
+    "typescript": "^5.7",
+    "vitest": "^3.0"
+  }
+}
