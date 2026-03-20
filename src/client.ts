@@ -1,20 +1,20 @@
 /**
- * WhiskeyFYI API client -- TypeScript wrapper for whiskeyfyi.com REST API.
+ * WhiskeyFYI API client — TypeScript wrapper for whiskeyfyi.com REST API.
  *
  * Zero dependencies. Uses native `fetch`.
+ *
+ * @example
+ * ```ts
+ * import { WhiskeyFYI } from "whiskeyfyi";
+ * const api = new WhiskeyFYI();
+ * const items = await api.search("query");
+ * ```
  */
 
-import type {
-  CaskDetail,
-  CompareResult,
-  DistilleryDetail,
-  ExpressionDetail,
-  GlossaryTerm,
-  RandomResult,
-  RegionDetail,
-  SearchResult,
-  TypeDetail,
-} from "./types.js";
+/** Generic API response type. */
+export interface ApiResponse {
+  [key: string]: unknown;
+}
 
 export class WhiskeyFYI {
   private baseUrl: string;
@@ -23,7 +23,7 @@ export class WhiskeyFYI {
     this.baseUrl = baseUrl.replace(/\/+$/, "");
   }
 
-  private async get<T>(
+  private async get<T = ApiResponse>(
     path: string,
     params?: Record<string, string>,
   ): Promise<T> {
@@ -36,51 +36,110 @@ export class WhiskeyFYI {
     return res.json() as Promise<T>;
   }
 
-  /** Search whiskey expressions, distilleries, regions, and glossary terms. */
-  async search(query: string): Promise<SearchResult> {
-    return this.get<SearchResult>("/api/search/", { q: query });
+  // -- Endpoints ----------------------------------------------------------
+
+  /** List all casks. */
+  async listCasks(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/casks/", params);
   }
 
-  /** Get a glossary term by slug. */
-  async glossaryTerm(slug: string): Promise<GlossaryTerm> {
-    return this.get<GlossaryTerm>(`/api/term/${slug}/`);
+  /** Get cask by slug. */
+  async getCask(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/casks/${slug}/`);
   }
 
-  /** Get whiskey expression detail by slug. */
-  async expression(slug: string): Promise<ExpressionDetail> {
-    return this.get<ExpressionDetail>(`/api/expression/${slug}/`);
+  /** List all countries. */
+  async listCountries(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/countries/", params);
   }
 
-  /** Get distillery detail by slug. */
-  async distillery(slug: string): Promise<DistilleryDetail> {
-    return this.get<DistilleryDetail>(`/api/distillery/${slug}/`);
+  /** Get country by slug. */
+  async getCountry(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/countries/${slug}/`);
   }
 
-  /** Get whiskey type detail by slug. */
-  async type(slug: string): Promise<TypeDetail> {
-    return this.get<TypeDetail>(`/api/type/${slug}/`);
+  /** List all distilleries. */
+  async listDistilleries(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/distilleries/", params);
   }
 
-  /** Get cask type detail by slug. */
-  async cask(slug: string): Promise<CaskDetail> {
-    return this.get<CaskDetail>(`/api/cask/${slug}/`);
+  /** Get distillery by slug. */
+  async getDistillery(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/distilleries/${slug}/`);
   }
 
-  /** Get whiskey region detail by slug. */
-  async region(slug: string): Promise<RegionDetail> {
-    return this.get<RegionDetail>(`/api/region/${slug}/`);
+  /** List all expressions. */
+  async listExpressions(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/expressions/", params);
   }
 
-  /** Compare two whiskey expressions. */
-  async compare(slugA: string, slugB: string): Promise<CompareResult> {
-    return this.get<CompareResult>("/api/compare/", {
-      a: slugA,
-      b: slugB,
-    });
+  /** Get expression by slug. */
+  async getExpression(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/expressions/${slug}/`);
   }
 
-  /** Get a random whiskey expression. */
-  async random(): Promise<RandomResult> {
-    return this.get<RandomResult>("/api/random/");
+  /** List all faqs. */
+  async listFaqs(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/faqs/", params);
+  }
+
+  /** Get faq by slug. */
+  async getFaq(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/faqs/${slug}/`);
+  }
+
+  /** List all glossary. */
+  async listGlossary(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/glossary/", params);
+  }
+
+  /** Get term by slug. */
+  async getTerm(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/glossary/${slug}/`);
+  }
+
+  /** List all guides. */
+  async listGuides(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/guides/", params);
+  }
+
+  /** Get guide by slug. */
+  async getGuide(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/guides/${slug}/`);
+  }
+
+  /** List all regions. */
+  async listRegions(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/regions/", params);
+  }
+
+  /** Get region by slug. */
+  async getRegion(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/regions/${slug}/`);
+  }
+
+  /** List all tools. */
+  async listTools(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/tools/", params);
+  }
+
+  /** Get tool by slug. */
+  async getTool(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/tools/${slug}/`);
+  }
+
+  /** List all types. */
+  async listTypes(params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/types/", params);
+  }
+
+  /** Get type by slug. */
+  async getType(slug: string): Promise<ApiResponse> {
+    return this.get(`/api/v1/types/${slug}/`);
+  }
+
+  /** Search across all content. */
+  async search(query: string, params?: Record<string, string>): Promise<ApiResponse> {
+    return this.get("/api/v1/search/", { q: query, ...params });
   }
 }
