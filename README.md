@@ -7,7 +7,7 @@
 
 TypeScript API client for [WhiskeyFYI](https://whiskeyfyi.com) -- the comprehensive whiskey reference with 80 whiskey expressions, 500+ distilleries across 7 countries and 13 regions, cask types, and 150 expert guides covering single malts, bourbons, cask maturation, and tasting methodology. Zero dependencies, uses native `fetch`.
 
-> **Explore whiskey at [whiskeyfyi.com](https://whiskeyfyi.com)** -- [Whiskeys](https://whiskeyfyi.com/whiskeys/) | [Distilleries](https://whiskeyfyi.com/distilleries/) | [Regions](https://whiskeyfyi.com/regions/) | [API Docs](https://whiskeyfyi.com/developers/)
+> **Explore whiskey at [whiskeyfyi.com](https://whiskeyfyi.com)** -- | [Distilleries](https://whiskeyfyi.com/distilleries/) | [Regions](https://whiskeyfyi.com/regions/) | [API Docs](https://whiskeyfyi.com/developers/)
 
 ## Table of Contents
 
@@ -72,9 +72,7 @@ Whiskey classification is governed by legal definitions that vary by country:
 | Irish Whiskey | Ireland | 3+ years aging, triple distillation common |
 | Japanese Whisky | Japan | Scotch-influenced, precision crafting |
 
-Learn more: [Whiskey Types](https://whiskeyfyi.com/type/) -- [Whiskey Encyclopedia](https://whiskeyfyi.com/whiskey/)
-
-### Cask Types and Maturation
+Learn more: [Whiskey Types](https://whiskeyfyi.com/types/) -- ### Cask Types and Maturation
 
 Maturation accounts for 60-80% of a whiskey's final flavor:
 
@@ -86,7 +84,7 @@ Maturation accounts for 60-80% of a whiskey's final flavor:
 | Virgin Oak | 200L | Strong oak, tannins, spice |
 | Mizunara | 480L | Sandalwood, incense |
 
-Learn more: [Cask Types](https://whiskeyfyi.com/cask/) -- [Whiskey Glossary](https://whiskeyfyi.com/glossary/)
+Learn more: [Cask Types](https://whiskeyfyi.com/casks/) -- [Whiskey Glossary](https://whiskeyfyi.com/glossary/)
 
 ### Whiskey Regions
 
@@ -120,10 +118,10 @@ All endpoints are free, require no authentication, and return JSON with CORS ena
 
 ```bash
 curl "https://whiskeyfyi.com/api/v1/search/?q=bourbon"
-curl "https://whiskeyfyi.com/api/v1/whiskey/makers-mark/"
-curl "https://whiskeyfyi.com/api/v1/distillery/makers-mark-distillery/"
-curl "https://whiskeyfyi.com/api/v1/compare/makers-mark/woodford-reserve/"
-curl "https://whiskeyfyi.com/api/v1/random/"
+curl ""
+curl ""
+curl ""
+curl ""
 ```
 
 | Method | Endpoint | Description |
@@ -138,9 +136,7 @@ curl "https://whiskeyfyi.com/api/v1/random/"
 | GET | `/api/v1/random/` | Random whiskey expression |
 | GET | `/api/v1/openapi.json` | OpenAPI 3.1.0 specification |
 
-Full spec: [OpenAPI 3.1.0](https://whiskeyfyi.com/api/v1/openapi.json)
-
-## Features
+Full spec: ## Features
 
 - **Comprehensive whiskey data**: 80 expressions, distillery profiles, regional styles
 - **14 whiskey types**: Bourbon, Scotch, Irish, Japanese, Rye, and more
