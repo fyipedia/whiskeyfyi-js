@@ -182,6 +182,17 @@ Part of the [FYIPedia](https://fyipedia.com) open-source developer tools ecosyst
 | teafyi | [PyPI](https://pypi.org/project/teafyi/) | [npm](https://www.npmjs.com/package/teafyi) | 60 tea varieties, teaware -- [teafyi.com](https://teafyi.com/) |
 | nihonshufyi | [PyPI](https://pypi.org/project/nihonshufyi/) | [npm](https://www.npmjs.com/package/nihonshufyi) | 80 sake, rice varieties -- [nihonshufyi.com](https://nihonshufyi.com/) |
 
+## Embed Widget
+
+Embed [WhiskeyFYI](https://whiskeyfyi.com) widgets on any website with [whiskeyfyi-embed](https://widget.whiskeyfyi.com):
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/whiskeyfyi-embed@1/dist/embed.min.js"></script>
+<div data-whiskeyfyi="entity" data-slug="example"></div>
+```
+
+Zero dependencies · Shadow DOM · 4 themes (light/dark/sepia/auto) · [Widget docs](https://widget.whiskeyfyi.com)
+
 ## License
 
 MIT
